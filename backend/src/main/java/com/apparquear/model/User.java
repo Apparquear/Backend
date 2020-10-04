@@ -10,20 +10,19 @@ import javax.persistence.Id;
 public class User {
 	
 	@Id
-	@Column(name="user_ID", unique = true, nullable = false)
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long user_ID;
 	
-	@Column(name="user_name", nullable = false)
+	@Column
 	private String user_name;
 	
-	@Column(name="user_password", nullable = false)
+	@Column
 	private String user_password;
 	
-	@Column(name="user_email", unique = true, nullable = false)
+	@Column
 	private String user_email;
 	
-	@Column(name="user_age", nullable = false)
+	@Column
 	private Integer user_age;
 
 	//Getters and setters
