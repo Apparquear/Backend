@@ -1,13 +1,13 @@
-package com.apparquear.backend;
+package com.apparquear;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BackendApplication {
+public class ApparquearApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BackendApplication.class, args);
+		SpringApplication.run(ApparquearApplication.class, args);
 	}
 
 }
