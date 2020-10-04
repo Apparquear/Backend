@@ -1,3 +1,4 @@
+DROP DATABASE apparquear;
 CREATE DATABASE apparquear;
 USE apparquear;
 CREATE TABLE user (
@@ -5,7 +6,7 @@ CREATE TABLE user (
   user_name  TEXT NOT NULL,
   user_password TEXT NOT NULL,
   user_email TEXT NOT NULL,
-  user_age TEXT NOT NULL
+  user_age INTEGER NOT NULL
 );
 CREATE TABLE profile (
     profile_ID INTEGER PRIMARY KEY AUTO_INCREMENT,
@@ -28,8 +29,8 @@ CREATE TABLE parking(
     parking_ID INTEGER PRIMARY KEY AUTO_INCREMENT,
     user_ID INTEGER NOT NULL,
     parking_name TEXT NOT NULL ,
-    opening_time DATETIME NOT NULL,
-    closing_time DATETIME NOT NULL ,
+    opening_time TIME NOT NULL,
+    closing_time TIME NOT NULL ,
     total_spaces INTEGER NOT NULL,
     car_spaces INTEGER NOT NULL,
     bike_spaces INTEGER NOT NULL ,
