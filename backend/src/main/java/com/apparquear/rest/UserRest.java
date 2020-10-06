@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.apparquear.dao.UserDAO;
 import com.apparquear.model.User;
+import com.apparquear.SHA;
 
 @RestController
 @RequestMapping("apparquear/user")
@@ -22,6 +23,7 @@ public class UserRest {
 	//Methods
 	@PostMapping("/save")
 	public void save(@RequestBody User user) {
+		user.setUser_password(SHA.getSHA512(user.getUser_password()));
 		userDAO.save(user);
 	}
 	
@@ -29,5 +31,21 @@ public class UserRest {
 	public List<User> findAll(){
 		return userDAO.findAll();
 	}
+	
+	@PostMapping("/login")
+    public boolean login  (@RequestBody User user){
+        List<User> userList;
+        userList=userDAO.findAll();
+        //System.out.println(userList.get(0).getUser_name());
+        //return user;
+        User DBUser= userList.stream()
+                .filter(userAux -> userAux.getUser_email().equals(user.getUser_email()))
+                .findAny()
+                .orElse(null);
+        if (DBUser!=null){
+            return DBUser.getUser_password().equals(SHA.getSHA512(user.getUser_password()));
+        }
+        return false;
+    }
 
 }
