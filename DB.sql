@@ -28,8 +28,7 @@ CREATE TABLE payment_info(
 CREATE TABLE parking(
     parking_ID INTEGER PRIMARY KEY AUTO_INCREMENT,
     user_ID INTEGER NOT NULL,
-    latitude DOUBLE NOT NULL,
-    longitude DOUBLE NOT NULL,
+    position INTEGER NOT NULL,
     parking_name TEXT NOT NULL ,
     opening_time TIME NOT NULL,
     closing_time TIME NOT NULL ,
@@ -45,7 +44,8 @@ CREATE TABLE parking(
     car_cost_minute REAL NOT NULL ,
     motorcycle_cost_minute REAL NOT NULL,
     score DOUBLE,
-    FOREIGN KEY (user_ID) REFERENCES user(user_ID)
+    FOREIGN KEY (user_ID) REFERENCES user(user_ID),
+    FOREIGN KEY (position) REFERENCES position(position_ID)
 );
 
 CREATE TABLE  qualification(
@@ -87,4 +87,10 @@ CREATE TABLE token(
     token TEXT NOT NULL,
     valid BOOLEAN NOT NULL,
     FOREIGN KEY (user_ID) REFERENCES user(user_ID)
+);
+
+CREATE TABLE position(
+	position_ID INTEGER PRIMARY KEY AUTO_INCREMENT,
+	latitude DOUBLE NOT NULL,
+    longitude DOUBLE NOT NULL,
 );
