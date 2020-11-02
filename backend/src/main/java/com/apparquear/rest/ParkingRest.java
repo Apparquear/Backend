@@ -24,8 +24,8 @@ public class ParkingRest {
 	@CrossOrigin
 	@PostMapping("/save/{user_id}/{token}")
 	public void save(@PathVariable Long user_id, @PathVariable String token, @RequestBody Parking parking) {
-		System.out.println(parking.getLatitude());
-		System.out.println(parking.getLongitude());
+		System.out.println(parking.getLocation().getLatitude());
+		System.out.println(parking.getLocation().getLongitude());
 		System.out.println(user_id);
 		System.out.println(token);
 		parking.setUser_ID(user_id);

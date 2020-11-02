@@ -1,17 +1,15 @@
 package com.apparquear.model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-public class Position {
+@Entity
+public class Location {
 
     double earthRadius = 6371;//km
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long position_ID;
+    private Long location_ID;
 
     @Column
     private Double latitude;
@@ -19,12 +17,12 @@ public class Position {
     @Column
     private Double longitude;
 
-    public Long getPosition_ID() {
-        return position_ID;
+    public Long getLocation_ID() {
+        return location_ID;
     }
 
-    public void setPosition_ID(Long position_ID) {
-        this.position_ID = position_ID;
+    public void setLocation_ID(Long location_ID) {
+        this.location_ID = location_ID;
     }
 
     public Double getLatitude() {
@@ -43,12 +41,12 @@ public class Position {
         this.longitude = longitude;
     }
 
-    public double getDistanceTo(Position position){
+    public double getDistanceTo(Location location){
         //https://en.wikipedia.org/wiki/Haversine_formula
         double latitudeRad1 = Math.toRadians(this.latitude);
         double longitudeRad1 = Math.toRadians(this.longitude);
-        double latitudeRad2 = Math.toRadians(position.getLatitude());
-        double longitudeRad2 = Math.toRadians(position.getLongitude());
+        double latitudeRad2 = Math.toRadians(location.getLatitude());
+        double longitudeRad2 = Math.toRadians(location.getLongitude());
 
         double deltaLongitude = (longitudeRad2 - longitudeRad1);
         double deltaLatitude = (latitudeRad2 - latitudeRad1);
