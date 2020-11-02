@@ -7,6 +7,8 @@ import javax.persistence.Id;
 
 public class Position {
 
+    double earthRadius = 6371;//km
+
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long position_ID;
@@ -42,8 +44,23 @@ public class Position {
     }
 
     public double getDistanceTo(Position position){
-        double distance;
-        distance= Math.sqrt(Math.pow((this.latitude-position.getLatitude()),2) + Math.pow(this.longitude-position.getLongitude(),2));
-        return distance;
+        //https://en.wikipedia.org/wiki/Haversine_formula
+        double latitudeRad1 = Math.toRadians(this.latitude);
+        double longitudeRad1 = Math.toRadians(this.longitude);
+        double latitudeRad2 = Math.toRadians(position.getLatitude());
+        double longitudeRad2 = Math.toRadians(position.getLongitude());
+
+        double deltaLongitude = (longitudeRad2 - longitudeRad1);
+        double deltaLatitude = (latitudeRad2 - latitudeRad1);
+
+        double sinLatitudeatitude = Math.sin(deltaLatitude / 2);
+        double sinLongitude = Math.sin(deltaLongitude / 2);
+
+        double a = (sinLatitudeatitude * sinLatitudeatitude) + Math.cos(latitudeRad1)*Math.cos(latitudeRad2)*(sinLongitude*sinLongitude);
+        double c = 2 * Math.asin (Math.min(1.0, Math.sqrt(a)));
+
+        double distanceInMeters = earthRadius * c * 1000;
+
+        return distanceInMeters;
     }
 }
