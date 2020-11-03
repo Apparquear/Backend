@@ -49,20 +49,19 @@ public class ParkingRest {
 	}
 
 	@CrossOrigin
-	@PostMapping("/cupos")
-	public List<Integer> findCupos(@RequestBody Parking park) {
-		List<Integer> ret = new ArrayList<>();
+	@PostMapping("/findAvailableSlots")
+	public List<Integer> findAvailableSlots(@RequestBody Parking requestedParking) {
+		List<Integer> resp = new ArrayList<>();
 		Parking parking = new Parking();
-		Optional<Parking> optionalParking = parkingDAO.findById(park.getParking_ID());
-		
-		if (optionalParking != null) {
+		try {
+			Optional<Parking> optionalParking = parkingDAO.findById(requestedParking.getParking_ID());
 			parking = optionalParking.get();
-			ret.add(parking.getCar_spaces_available());
-			ret.add(parking.getMotorcycle_spaces_available());
-			ret.add(parking.getBike_spaces_available());
-		} else {
+			resp.add(parking.getCar_spaces_available());
+			resp.add(parking.getMotorcycle_spaces_available());
+			resp.add(parking.getBike_spaces_available());
+		}catch (Exception e) {
 			throw new ApiRequestException("Este parqueadero no se encuentra registrado");
 		}
-		return ret;
+		return resp;
 	}
 }
