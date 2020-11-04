@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import com.apparquear.model.Location;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,8 +28,8 @@ public class ParkingRest {
 	@CrossOrigin
 	@PostMapping("/save/{user_id}/{token}")
 	public void save(@PathVariable Long user_id, @PathVariable String token, @RequestBody Parking parking) {
-		System.out.println(parking.getLocation().getLatitude());
-		System.out.println(parking.getLocation().getLongitude());
+		System.out.println(parking.getLatitude());
+		System.out.println(parking.getLongitude());
 		System.out.println(user_id);
 		System.out.println(token);
 		parking.setUser_ID(user_id);
@@ -49,16 +48,6 @@ public class ParkingRest {
 		return parkingDAO.findAll();
 	}
 
-	@CrossOrigin
-	@GetMapping("/findNear/{zoom}")
-	public List<Parking> findNear(@RequestBody Location location, @PathVariable Integer zoom){
-		List<Parking> allParkings = parkingDAO.findAll();
-		for (Parking parking: allParkings) {
-			zoom=19 -zoom;
-			if (parking.getLocation().getDistanceTo(location)>(50*zoom)) allParkings.remove(parking);
-		}
-		return allParkings;
-    
 	@CrossOrigin
 	@PostMapping("/findAvailableSlots")
 	public List<Integer> findAvailableSlots(@RequestBody Parking requestedParking) {

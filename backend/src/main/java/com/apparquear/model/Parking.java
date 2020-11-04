@@ -2,7 +2,13 @@ package com.apparquear.model;
 
 import java.sql.Time;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Parking {
@@ -18,10 +24,12 @@ public class Parking {
 	@JoinColumn(name = "user_ID", referencedColumnName = "user_ID", insertable = false, updatable = false)
 	private User user;
 	
-	@OneToOne
-	@JoinColumn(name = "location_ID", referencedColumnName = "position_ID",insertable = false,updatable = false)
-	private Location location;
-
+	@Column
+	private Double latitude;
+	
+	@Column
+	private Double longitude;
+	
 	@Column
 	private String parking_name;
 	
@@ -91,12 +99,20 @@ public class Parking {
 		this.user_ID = user_ID;
 	}
 
-	public Location getLocation() {
-		return location;
+	public Double getLatitude() {
+		return latitude;
 	}
 
-	public void setLocation(Location location) {
-		this.location = location;
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
+	}
+
+	public Double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
 	}
 
 	public String getParking_name() {
