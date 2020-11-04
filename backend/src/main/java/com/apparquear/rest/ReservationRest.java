@@ -20,7 +20,7 @@ import com.apparquear.model.Reservation;
 
 @RestController
 @RequestMapping("apparquear/reservation")
-public class ParkingRest {
+public class ReservationRest {
 	@Autowired
 	private ReservationDAO reservationDAO;
 
@@ -28,21 +28,17 @@ public class ParkingRest {
 	@CrossOrigin
 	@PostMapping("/save/{user_id}/{token}")
 	public void save(@PathVariable Long user_id, @PathVariable String token, @RequestBody Reservation reservation) {
-		System.out.println(parking.getLatitude());
-		System.out.println(parking.getLongitude());
-		System.out.println(user_id);
-        System.out.println(token);
         reservation.setUser_ID(user_id);
         reservation.setParking_ID(parking_id);
         reservation.setReservation_time(reservation_time);
         reservation.setReservation_duration(reservation_duration);
         reservation.setVehicle_type(vehicle_type);
 
-        reservationDAO.save(parking);        
+        reservationDAO.save(reservation);        
 	}
 
 	@GetMapping("/findAll")
-	public List<Parking> findAll() {
+	public List<Reservation> findAll() {
 		return reservationDAO.findAll();
 	}
 }
