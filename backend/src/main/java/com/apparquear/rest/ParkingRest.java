@@ -1,7 +1,9 @@
 package com.apparquear.rest;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.apparquear.model.Location;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,5 +43,15 @@ public class ParkingRest {
 	@GetMapping("/findAll")
 	public List<Parking> findAll(){
 		return parkingDAO.findAll();
+	}
+
+	@GetMapping("/findNear/{zoom}")
+	public List<Parking> findNear(@RequestBody Location location, @PathVariable int zoom){
+		List<Parking> allParkings = parkingDAO.findAll();
+		for (Parking parking: allParkings) {
+			zoom=19 -zoom;
+			if (parking.getLocation().getDistanceTo(location)>(50*zoom)) allParkings.remove(parking);
+		}
+		return allParkings;
 	}
 }
