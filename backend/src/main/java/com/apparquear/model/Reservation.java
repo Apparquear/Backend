@@ -1,6 +1,6 @@
 package com.apparquear.model;
 
-import java.sql.Time;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Parking {
+public class Reservation {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -32,7 +32,7 @@ public class Parking {
 	private Parking parking;
 	
 	@Column
-	private Datatime reservation_time;
+	private Date reservation_time;
 
 	@Column
 	private Double reservation_duration;
@@ -79,19 +79,19 @@ public class Parking {
     }
     
 
-	public Datatime getReservation_time() {
+	public Date getReservation_time() {
 		return reservation_time;
 	}
 
-	public void setReservation_time(Datatime reservation_time) {
+	public void setReservation_time(Date reservation_time) {
 		this.reservation_time = reservation_time;
     }
     
-    public Datatime getReservation_duration() {
+    public Double getReservation_duration() {
 		return reservation_duration;
 	}
 
-	public void setReservation_duration(Datatime reservation_duration) {
+	public void setReservation_duration(Double reservation_duration) {
 		this.reservation_duration = reservation_duration;
 	}
 

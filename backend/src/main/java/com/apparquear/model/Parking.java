@@ -1,3 +1,4 @@
+package com.apparquear.model;
 
 import java.sql.Time;
 
