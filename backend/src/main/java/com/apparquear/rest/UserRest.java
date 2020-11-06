@@ -55,7 +55,7 @@ public class UserRest {
         		String secureToken = new String();
         		secureToken = token.generateToken(DBUser);
         		token.setValid(true);
-        		token.setUser_ID(DBUser.getUser_ID());
+        		token.setUser_ID(DBUser.getUserID());
         		token.setToken(secureToken);
         		tokenDAO.save(token);
         	} else {

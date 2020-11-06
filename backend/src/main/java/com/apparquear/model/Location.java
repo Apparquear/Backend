@@ -5,11 +5,16 @@ import javax.persistence.*;
 @Entity
 public class Location {
 
-    double earthRadius = 6371;//km
-
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long location_ID;
+    private Long locationID;
+	
+	@Column
+	private Long parkingID;
+	
+	@OneToOne
+	@JoinColumn(name = "parkingID", referencedColumnName = "parkingID",insertable = false,updatable = false)
+	private Parking parking;
 
     @Column
     private Double latitude;
@@ -17,15 +22,31 @@ public class Location {
     @Column
     private Double longitude;
 
-    public Long getLocation_ID() {
-        return location_ID;
+    public Long getLocationID() {
+        return locationID;
     }
 
-    public void setLocation_ID(Long location_ID) {
-        this.location_ID = location_ID;
+    public void setLocationID(Long locationID) {
+        this.locationID = locationID;
     }
 
-    public Double getLatitude() {
+    public Long getParkingID() {
+		return parkingID;
+	}
+
+	public void setParkingID(Long parkingID) {
+		this.parkingID = parkingID;
+	}
+
+	public Parking getParking() {
+		return parking;
+	}
+
+	public void setParking(Parking parking) {
+		this.parking = parking;
+	}
+
+	public Double getLatitude() {
         return latitude;
     }
 
@@ -42,6 +63,8 @@ public class Location {
     }
 
     public double getDistanceTo(Location location){
+
+        double earthRadius = 6371;//km
         //https://en.wikipedia.org/wiki/Haversine_formula
         double latitudeRad1 = Math.toRadians(this.latitude);
         double longitudeRad1 = Math.toRadians(this.longitude);
