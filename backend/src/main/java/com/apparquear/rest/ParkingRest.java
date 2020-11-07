@@ -63,16 +63,20 @@ public class ParkingRest {
 
 	@CrossOrigin
 	@GetMapping("/findNear/{zoom}")
-	public List<Parking> findNear(@RequestBody Location location, @PathVariable Integer zoom) {
-		List<Parking> allParkings = parkingDAO.findAll();
-		for (Parking parking : allParkings) {
-			zoom = 19 - zoom;
-			System.out.println(locationDAO.findByParkingID(parking.getParkingID()));
-			if (locationDAO.findByParkingID(parking.getParkingID()).getDistanceTo(location) > (50 * zoom))
-				allParkings.remove(parking);
+	public List<Location> findNear(@RequestBody Location location, @PathVariable Integer zoom) {
+		List<Location> allLocation = locationDAO.findAll();
+		try {
+			for (Location position : allLocation) {
+				zoom = 19 - zoom;
+				if (position.getDistanceTo(location) > (50 * zoom))
+					allLocation.remove(position);
+			}
 		}
-		System.out.println(allParkings);
-		return allParkings;
+		catch (Exception e){
+			throw new ApiRequestException("No se encontro ninguna ubicacion cercana");
+		}
+		System.out.println(allLocation);
+		return allLocation;
 	}
 
 	@CrossOrigin
