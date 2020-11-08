@@ -79,6 +79,24 @@ public class ParkingRest {
 		return allLocation;
 	}
 
+
+	@CrossOrigin
+	@GetMapping("/findRange")
+	public List<Location> findNear(@RequestBody List<Location> locations) {
+		List<Location> allLocation = locationDAO.findAll();
+		try {
+			for (Location position : allLocation) {
+				if (!position.inside(locations.get(0),locations.get(1)))allLocation.remove(position);
+			}
+		}
+		catch (Exception e){
+			throw new ApiRequestException("No se encontro ninguna ubicacion cercana");
+		}
+		System.out.println(allLocation);
+		return allLocation;
+	}
+
+
 	@CrossOrigin
 	@PostMapping("/findAvailableSlots")
 	public List<Integer> findAvailableSlots(@RequestBody Parking requestedParking) {

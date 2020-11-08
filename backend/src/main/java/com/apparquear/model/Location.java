@@ -8,10 +8,10 @@ public class Location {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long locationID;
-	
+
 	@Column
 	private Long parkingID;
-	
+
 	@OneToOne
 	@JoinColumn(name = "parkingID", referencedColumnName = "parkingID",insertable = false,updatable = false)
 	private Parking parking;
@@ -83,5 +83,12 @@ public class Location {
         double distanceInMeters = earthRadius * c * 1000;
 
         return distanceInMeters;
+    }
+
+    public boolean inside(Location southWest, Location nortEast) {
+        if (this.longitude>southWest.getLongitude() & this.longitude<nortEast.getLongitude()){
+            return this.latitude > southWest.getLongitude() & this.latitude < nortEast.getLatitude();
+        }
+        return  false;
     }
 }
