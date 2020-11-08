@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.apparquear.model.Bounds;
 import com.apparquear.model.Location;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,27 +74,27 @@ public class ParkingRest {
 			}
 		}
 		catch (Exception e){
-			throw new ApiRequestException("No se encontro ninguna ubicacion cercana");
+			throw new ApiRequestException("Error inesperado");
 		}
-		System.out.println(allLocation);
 		return allLocation;
 	}
 
 
 	@CrossOrigin
-	@GetMapping("/findRange")
-	public List<Location> findNear(@RequestBody List<Location> locations) {
+	@PostMapping("/findRange")
+	public List<Location> findRange(@RequestBody(required = false) Bounds bounds) {
 		List<Location> allLocation = locationDAO.findAll();
+		List<Location> nearbyLocations = new <Location> ArrayList();
 		try {
 			for (Location position : allLocation) {
-				if (!position.inside(locations.get(0),locations.get(1)))allLocation.remove(position);
+				if (position.inside(bounds.getSouthWest(),bounds.getNorthEast()))
+					nearbyLocations.add(position);
 			}
 		}
 		catch (Exception e){
-			throw new ApiRequestException("No se encontro ninguna ubicacion cercana");
+			throw new ApiRequestException("Error inesperado");
 		}
-		System.out.println(allLocation);
-		return allLocation;
+		return nearbyLocations;
 	}
 
 

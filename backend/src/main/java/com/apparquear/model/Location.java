@@ -85,9 +85,9 @@ public class Location {
         return distanceInMeters;
     }
 
-    public boolean inside(Location southWest, Location nortEast) {
-        if (this.longitude>southWest.getLongitude() & this.longitude<nortEast.getLongitude()){
-            return this.latitude > southWest.getLongitude() & this.latitude < nortEast.getLatitude();
+    public boolean inside(Location southWest, Location northEast) {
+        if (this.latitude >= southWest.getLatitude() && this.longitude <= northEast.getLongitude()){
+            return true;
         }
         return  false;
     }
