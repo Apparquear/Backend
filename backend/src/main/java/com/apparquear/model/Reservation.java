@@ -1,7 +1,5 @@
 package com.apparquear.model;
-
-import java.sql.Date;
-
+import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,14 +12,14 @@ import javax.persistence.ManyToOne;
 public class Reservation {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long reservation_ID;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer reservation_ID;
 	
 	@Column
-	private Long parking_ID;
+	private Integer parking_ID;
 
 	@Column
-	private Long user_ID;
+	private Integer user_ID;
 
 	@ManyToOne
 	@JoinColumn(name = "user_ID", referencedColumnName = "user_ID", insertable = false, updatable = false)
@@ -32,14 +30,13 @@ public class Reservation {
 	private Parking parking;
 	
 	@Column
-	private Date reservation_time;
+	private Timestamp reservation_time;
 
 	@Column
 	private Double reservation_duration;
 	
 	@Column
 	private String vehicle_type;
-
 	// set and get
 
 	public User getUser() {
@@ -58,32 +55,36 @@ public class Reservation {
 		this.parking = parking;
 	}
 
-	public void setReservation_ID(Long reservation_ID) {
+	public Integer getReservation_ID() {
+		return reservation_ID;
+	}
+
+	public void setReservation_ID(Integer reservation_ID) {
 		this.reservation_ID = reservation_ID;
 	}
 
-	public Long getUser_ID() {
+	public Integer getUser_ID() {
 		return user_ID;
 	}
 
-	public void setUser_ID(Long user_ID) {
+	public void setUser_ID(Integer user_ID) {
 		this.user_ID = user_ID;
     }
 
-    public Long getParking_ID() {
+    public Integer getParking_ID() {
 		return parking_ID;
 	}
 
-	public void setParking_ID(Long parking_ID) {
+	public void setParking_ID(Integer parking_ID) {
 		this.parking_ID = parking_ID;
     }
     
 
-	public Date getReservation_time() {
+	public Timestamp getReservation_time() {
 		return reservation_time;
 	}
 
-	public void setReservation_time(Date reservation_time) {
+	public void setReservation_time(Timestamp  reservation_time) {
 		this.reservation_time = reservation_time;
     }
     

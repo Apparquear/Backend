@@ -28,8 +28,6 @@ CREATE TABLE payment_info(
 CREATE TABLE parking(
     parking_ID INTEGER PRIMARY KEY AUTO_INCREMENT,
     user_ID INTEGER NOT NULL,
-    latitude DOUBLE NOT NULL,
-    longitude DOUBLE NOT NULL,
     parking_name TEXT NOT NULL ,
     opening_time TIME NOT NULL,
     closing_time TIME NOT NULL ,
@@ -59,11 +57,11 @@ CREATE TABLE  qualification(
 );
 
 CREATE TABLE reservation(
-    reservation_ID INTEGER PRIMARY KEY ,
+    reservation_ID INTEGER PRIMARY KEY AUTO_INCREMENT ,
     user_ID INTEGER NOT NULL ,
     parking_ID INTEGER NOT NULL ,
-    reservation_time DATETIME NOT NULL ,
-    reservation_duration real,
+    reservation_time timestamp NOT NULL ,
+    reservation_duration DOUBLE,
     vehicle_type TEXT NOT NULL,
     FOREIGN KEY (user_ID) REFERENCES user(user_ID),
     FOREIGN KEY (parking_ID) REFERENCES parking(parking_ID)
@@ -79,12 +77,4 @@ CREATE TABLE bill (
     cost DOUBLE NOT NULL,
     FOREIGN KEY (user_ID) REFERENCES user(user_ID),
     FOREIGN KEY (parking_ID) REFERENCES parking(parking_ID)
-);
-
-CREATE TABLE token(
-	token_ID INTEGER PRIMARY KEY AUTO_INCREMENT,
-	user_ID INTEGER NOT NULL,
-    token TEXT NOT NULL,
-    valid BOOLEAN NOT NULL,
-    FOREIGN KEY (user_ID) REFERENCES user(user_ID)
 );
