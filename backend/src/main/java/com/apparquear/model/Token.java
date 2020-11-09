@@ -15,13 +15,13 @@ public class Token {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long token_ID;
+	private Long tokenID;
 	
 	@Column
-	private Long user_ID;
+	private Long userID;
 	
 	@ManyToOne
-	@JoinColumn(name = "user_ID", referencedColumnName = "user_ID", insertable = false, updatable = false)
+	@JoinColumn(name = "userID", referencedColumnName = "userID", insertable = false, updatable = false)
 	private User user;
 	
 	@Column
@@ -30,20 +30,20 @@ public class Token {
 	@Column
 	private Boolean valid;
 	
-	public Long getToken_ID() {
-		return token_ID;
+	public Long getTokenID() {
+		return tokenID;
 	}
 
-	public void setToken_ID(Long token_ID) {
-		this.token_ID = token_ID;
+	public void setToken_ID(Long tokenID) {
+		this.tokenID = tokenID;
 	}
 
-	public Long getUser_ID() {
-		return user_ID;
+	public Long getUserID() {
+		return userID;
 	}
 
-	public void setUser_ID(Long user_ID) {
-		this.user_ID = user_ID;
+	public void setUser_ID(Long userID) {
+		this.userID = userID;
 	}
 
 	public User getUser() {
