@@ -46,12 +46,16 @@ public class ParkingRest {
 			parking.setTotal_spaces_available(
 					parking.getBike_spaces() + parking.getCar_spaces() + parking.getMotorcycle_spaces());
 			parkingDAO.save(parking);
-			Optional<Parking> savedParking = parkingDAO.findOne((Example<Parking>) parking);
-			Location location = new Location();
-			location.setLatitude(latitude);
-			location.setLongitude(longitude);
-			location.setParkingID(savedParking.get().getParkingID());
-			locationDAO.save(location);
+			List<Parking> savedParking = parkingDAO.findAll();
+			for(Parking dbParking : savedParking) {
+				if (dbParking.equals(parking)) {
+					Location location = new Location();
+					location.setLatitude(latitude);
+					location.setLongitude(longitude);
+					location.setParkingID(dbParking.getParkingID());
+					locationDAO.save(location);
+				}
+			}
 		} catch (Exception e) {
 			throw new ApiRequestException(e.getMessage());
 		}
