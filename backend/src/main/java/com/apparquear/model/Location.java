@@ -86,8 +86,8 @@ public class Location {
     }
 
     public boolean inside(Location southWest, Location northEast) {
-        if (this.latitude >= southWest.getLatitude() && this.longitude <= northEast.getLongitude()){
-            return true;
+        if (this.latitude >= southWest.getLatitude() && this.latitude <= northEast.getLatitude()){
+            return (this.longitude >= southWest.getLongitude() && this.longitude <= northEast.getLongitude());
         }
         return  false;
     }
