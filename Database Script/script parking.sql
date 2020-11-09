@@ -1,0 +1,43 @@
+INSERT INTO parking (parkingID, userID, parking_name, opening_time,  closing_time, total_spaces, car_spaces, bike_spaces, motorcycle_spaces, total_spaces_available, car_spaces_available, bike_spaces_available, motorcycle_spaces_available, bike_cost_minute, car_cost_minute, motorcycle_cost_minute, score)
+VALUES ('1','1','PARQUEADERO 24 HORAS', '00:00:00', '23:59:59','20','5','10','5','15','5','5','5','60','60','60','4');
+INSERT INTO parking (parkingID, userID, parking_name, opening_time,  closing_time, total_spaces, car_spaces, bike_spaces, motorcycle_spaces, total_spaces_available, car_spaces_available, bike_spaces_available, motorcycle_spaces_available, bike_cost_minute, car_cost_minute, motorcycle_cost_minute, score)
+VALUES ('2','1','Parqueadero la 20 Santa Ines', '08:00:00', '20:00:00','25','10','10','5','20','10','5','5','60','60','60','3');
+INSERT INTO parking (parkingID, userID, parking_name, opening_time,  closing_time, total_spaces, car_spaces, bike_spaces, motorcycle_spaces, total_spaces_available, car_spaces_available, bike_spaces_available, motorcycle_spaces_available, bike_cost_minute, car_cost_minute, motorcycle_cost_minute, score)
+VALUES ('3','1','Parqueadero', '08:00:00', '20:00:00','10','10','0','0','5','5','0','0','60','60','60','4');
+INSERT INTO parking (parkingID, userID, parking_name, opening_time,  closing_time, total_spaces, car_spaces, bike_spaces, motorcycle_spaces, total_spaces_available, car_spaces_available, bike_spaces_available, motorcycle_spaces_available, bike_cost_minute, car_cost_minute, motorcycle_cost_minute, score)
+VALUES ('4','1','Parqueadero 24 horas Sogamoso', '00:00:00', '23:59:59','10','10','0','0','5','5','0','0','60','60','60','4');
+INSERT INTO parking (parkingID, userID, parking_name, opening_time,  closing_time, total_spaces, car_spaces, bike_spaces, motorcycle_spaces, total_spaces_available, car_spaces_available, bike_spaces_available, motorcycle_spaces_available, bike_cost_minute, car_cost_minute, motorcycle_cost_minute, score)
+VALUES ('5','1','Parqueadero de la decima', '08:00:00', '20:00:00','30','20','5','5','15','5','5','5','60','60','60','4');
+INSERT INTO parking (parkingID, userID, parking_name, opening_time,  closing_time, total_spaces, car_spaces, bike_spaces, motorcycle_spaces, total_spaces_available, car_spaces_available, bike_spaces_available, motorcycle_spaces_available, bike_cost_minute, car_cost_minute, motorcycle_cost_minute, score)
+VALUES ('6','1','Servicentro', '08:00:00', '20:00:00','40','15','15','10','25','15','5','5','60','60','60','4');
+INSERT INTO parking (parkingID, userID, parking_name, opening_time,  closing_time, total_spaces, car_spaces, bike_spaces, motorcycle_spaces, total_spaces_available, car_spaces_available, bike_spaces_available, motorcycle_spaces_available, bike_cost_minute, car_cost_minute, motorcycle_cost_minute, score)
+VALUES ('7','1','Parqueadero Santander', '08:00:00', '20:00:00','30','15','5','10','15','5','5','5','60','60','60','4');
+INSERT INTO parking (parkingID, userID, parking_name, opening_time,  closing_time, total_spaces, car_spaces, bike_spaces, motorcycle_spaces, total_spaces_available, car_spaces_available, bike_spaces_available, motorcycle_spaces_available, bike_cost_minute, car_cost_minute, motorcycle_cost_minute, score)
+VALUES ('8','1','Parqueadero', '08:00:00', '20:00:00','20','15','5','0','10','5','0','0','60','60','60','4');
+
+
+INSERT INTO parking (parkingID, userID, parking_name, opening_time,  closing_time, total_spaces, car_spaces, bike_spaces, motorcycle_spaces, total_spaces_available, car_spaces_available, bike_spaces_available, motorcycle_spaces_available, bike_cost_minute, car_cost_minute, motorcycle_cost_minute, score)
+VALUES ('9','1','Parqueadero Parque Simon Bolivar', '08:00:00', '20:00:00','30','15','5','10','20','15','5','0','60','60','60','4');
+INSERT INTO parking (parkingID, userID, parking_name, opening_time,  closing_time, total_spaces, car_spaces, bike_spaces, motorcycle_spaces, total_spaces_available, car_spaces_available, bike_spaces_available, motorcycle_spaces_available, bike_cost_minute, car_cost_minute, motorcycle_cost_minute, score)
+VALUES ('10','1','Parqueadero R y R', '08:00:00', '20:00:00','25','15','5','5','15','5','10','0','60','60','60','4');
+INSERT INTO parking (parkingID, userID, parking_name, opening_time,  closing_time, total_spaces, car_spaces, bike_spaces, motorcycle_spaces, total_spaces_available, car_spaces_available, bike_spaces_available, motorcycle_spaces_available, bike_cost_minute, car_cost_minute, motorcycle_cost_minute, score)
+VALUES ('11','1','Parqueadero Estadio', '08:00:00', '20:00:00','45','25','10','5','25','15','10','0','60','60','60','4.8');
+INSERT INTO parking (parkingID, userID, parking_name, opening_time,  closing_time, total_spaces, car_spaces, bike_spaces, motorcycle_spaces, total_spaces_available, car_spaces_available, bike_spaces_available, motorcycle_spaces_available, bike_cost_minute, car_cost_minute, motorcycle_cost_minute, score)
+VALUES ('12','1','Los Magnificos', '08:00:00', '20:00:00','15','10','5','0','10','10','5','0','60','60','60','4');
+INSERT INTO parking (parkingID, userID, parking_name, opening_time,  closing_time, total_spaces, car_spaces, bike_spaces, motorcycle_spaces, total_spaces_available, car_spaces_available, bike_spaces_available, motorcycle_spaces_available, bike_cost_minute, car_cost_minute, motorcycle_cost_minute, score)
+VALUES ('13','1','GOOD PARQUEADERO', '08:00:00', '20:00:00','20','15','5','0','10','10','0','0','60','60','60','4');
+INSERT INTO parking (parkingID, userID, parking_name, opening_time,  closing_time, total_spaces, car_spaces, bike_spaces, motorcycle_spaces, total_spaces_available, car_spaces_available, bike_spaces_available, motorcycle_spaces_available, bike_cost_minute, car_cost_minute, motorcycle_cost_minute, score)
+VALUES ('14','1','Parqueadero Tequendama Castellana 98', '08:00:00', '20:00:00','25','15','5','5','10','5','5','0','60','60','60','4.2');
+INSERT INTO parking (parkingID, userID, parking_name, opening_time,  closing_time, total_spaces, car_spaces, bike_spaces, motorcycle_spaces, total_spaces_available, car_spaces_available, bike_spaces_available, motorcycle_spaces_available, bike_cost_minute, car_cost_minute, motorcycle_cost_minute, score)
+VALUES ('15','1','Parqueadero 24h', '00:00:00', '23:59:59','20','15','5','0','10','10','0','0','60','60','60','1.7');
+INSERT INTO parking (parkingID, userID, parking_name, opening_time,  closing_time, total_spaces, car_spaces, bike_spaces, motorcycle_spaces, total_spaces_available, car_spaces_available, bike_spaces_available, motorcycle_spaces_available, bike_cost_minute, car_cost_minute, motorcycle_cost_minute, score)
+VALUES ('16','1','Parqueadero Publico 24h', '00:00:00', '23:59:59','15','15','0','0','10','10','0','0','60','60','60','4');
+INSERT INTO parking (parkingID, userID, parking_name, opening_time,  closing_time, total_spaces, car_spaces, bike_spaces, motorcycle_spaces, total_spaces_available, car_spaces_available, bike_spaces_available, motorcycle_spaces_available, bike_cost_minute, car_cost_minute, motorcycle_cost_minute, score)
+VALUES ('17','1','Parqueadero Montevideo y Jaymar', '08:00:00', '20:00:00','25','15','10','0','5','5','0','0','60','60','60','2');
+INSERT INTO parking (parkingID, userID, parking_name, opening_time,  closing_time, total_spaces, car_spaces, bike_spaces, motorcycle_spaces, total_spaces_available, car_spaces_available, bike_spaces_available, motorcycle_spaces_available, bike_cost_minute, car_cost_minute, motorcycle_cost_minute, score)
+VALUES ('18','1','JHR Parqueadero', '08:00:00', '20:00:00','20','15','5','0','10','10','0','0','60','60','60','3.8');
+INSERT INTO parking (parkingID, userID, parking_name, opening_time,  closing_time, total_spaces, car_spaces, bike_spaces, motorcycle_spaces, total_spaces_available, car_spaces_available, bike_spaces_available, motorcycle_spaces_available, bike_cost_minute, car_cost_minute, motorcycle_cost_minute, score)
+VALUES ('19','1','Parqueadero Cl 66a', '08:00:00', '20:00:00','15','15','0','0','10','10','0','0','60','60','60','4.7');
+INSERT INTO parking (parkingID, userID, parking_name, opening_time,  closing_time, total_spaces, car_spaces, bike_spaces, motorcycle_spaces, total_spaces_available, car_spaces_available, bike_spaces_available, motorcycle_spaces_available, bike_cost_minute, car_cost_minute, motorcycle_cost_minute, score)
+VALUES ('20','1','Parqueaderos del Futuro', '08:00:00', '20:00:00','25','15','5','5','10','5','5','0','60','60','60','3.5');
+SELECT * FROM apparquear.parking;
