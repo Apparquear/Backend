@@ -1,4 +1,4 @@
-DROP DATABASE apparquear;
+DROP  DATABASE IF EXISTS apparquear;
 CREATE DATABASE apparquear;
 USE apparquear;
 
