@@ -15,21 +15,14 @@ public class Parking {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long parking_ID;
+	private Long parkingID;
 	
 	@Column
-	private Long user_ID;
+	private Long userID;
 
 	@ManyToOne
-	@JoinColumn(name = "user_ID", referencedColumnName = "user_ID", insertable = false, updatable = false)
+	@JoinColumn(name = "userID", referencedColumnName = "userID", insertable = false, updatable = false)
 	private User user;
-	
-	@Column
-	private Double latitude;
-	
-	@Column
-	private Double longitude;
-	
 	@Column
 	private String parking_name;
 	
@@ -83,36 +76,20 @@ public class Parking {
 		this.user = user;
 	}
 
-	public Long getParking_ID() {
-		return parking_ID;
+	public Long getParkingID() {
+		return parkingID;
 	}
 
-	public void setParking_ID(Long parking_ID) {
-		this.parking_ID = parking_ID;
+	public void setParkingID(Long parkingID) {
+		this.parkingID = parkingID;
 	}
 
 	public Long getUser_ID() {
-		return user_ID;
+		return userID;
 	}
 
-	public void setUser_ID(Long user_ID) {
-		this.user_ID = user_ID;
-	}
-
-	public Double getLatitude() {
-		return latitude;
-	}
-
-	public void setLatitude(Double latitude) {
-		this.latitude = latitude;
-	}
-
-	public Double getLongitude() {
-		return longitude;
-	}
-
-	public void setLongitude(Double longitude) {
-		this.longitude = longitude;
+	public void setUser_ID(Long userID) {
+		this.userID = userID;
 	}
 
 	public String getParking_name() {

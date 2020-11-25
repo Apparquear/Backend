@@ -13,27 +13,27 @@ public class Reservation {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer reservation_ID;
+	private Integer reservationID;
 	
 	@Column
-	private Integer parking_ID;
+	private Integer parkingID;
 
 	@Column
-	private Integer user_ID;
+	private Integer userID;
 
 	@ManyToOne
-	@JoinColumn(name = "user_ID", referencedColumnName = "user_ID", insertable = false, updatable = false)
+	@JoinColumn(name = "userID", referencedColumnName = "userID", insertable = false, updatable = false)
 	private User user;
 
 	@ManyToOne
-	@JoinColumn(name = "parking_ID", referencedColumnName = "parking_ID", insertable = false, updatable = false)
+	@JoinColumn(name = "parkingID", referencedColumnName = "parkingID", insertable = false, updatable = false)
 	private Parking parking;
 	
 	@Column
 	private Timestamp reservation_time;
 
 	@Column
-	private Double reservation_duration;
+	private Timestamp final_time;
 	
 	@Column
 	private String vehicle_type;
@@ -55,28 +55,28 @@ public class Reservation {
 		this.parking = parking;
 	}
 
-	public Integer getReservation_ID() {
-		return reservation_ID;
+	public Integer getReservationID() {
+		return reservationID;
 	}
 
-	public void setReservation_ID(Integer reservation_ID) {
-		this.reservation_ID = reservation_ID;
+	public void setReservationID(Integer reservationID) {
+		this.reservationID = reservationID;
 	}
 
-	public Integer getUser_ID() {
-		return user_ID;
+	public Integer getUserID() {
+		return userID;
 	}
 
-	public void setUser_ID(Integer user_ID) {
-		this.user_ID = user_ID;
+	public void setUser_ID(Integer userID) {
+		this.userID = userID;
     }
 
     public Integer getParking_ID() {
-		return parking_ID;
+		return parkingID;
 	}
 
-	public void setParking_ID(Integer parking_ID) {
-		this.parking_ID = parking_ID;
+	public void setParking_ID(Integer parkingID) {
+		this.parkingID = parkingID;
     }
     
 
@@ -88,12 +88,12 @@ public class Reservation {
 		this.reservation_time = reservation_time;
     }
     
-    public Double getReservation_duration() {
-		return reservation_duration;
+    public Timestamp getFinal_time() {
+		return final_time;
 	}
 
-	public void setReservation_duration(Double reservation_duration) {
-		this.reservation_duration = reservation_duration;
+	public void setFinal_time(Timestamp final_time) {
+		this.final_time = final_time;
 	}
 
 
