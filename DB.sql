@@ -1,4 +1,4 @@
-DROP  DATABASE IF EXISTS apparquear;
+DROP DATABASE apparquear;
 CREATE DATABASE apparquear;
 USE apparquear;
 
@@ -67,11 +67,11 @@ CREATE TABLE  qualification(
 );
 
 CREATE TABLE reservation(
-	reservationID INTEGER PRIMARY KEY ,
+	reservationID INTEGER PRIMARY KEY AUTO_INCREMENT,
 	userID INTEGER NOT NULL ,
 	parkingID INTEGER NOT NULL ,
-	reservation_time DATETIME NOT NULL ,
-	reservation_duration real,
+	reservation_time timestamp NOT NULL ,
+	final_time timestamp NOT NULL,
 	vehicle_type TEXT NOT NULL,
 	FOREIGN KEY (userID) REFERENCES user(userID),
 	FOREIGN KEY (parkingID) REFERENCES parking(parkingID)
@@ -96,4 +96,3 @@ CREATE TABLE token(
 	valid BOOLEAN NOT NULL,
 	FOREIGN KEY (userID) REFERENCES user(userID)
 );
-
