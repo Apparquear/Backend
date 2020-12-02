@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.apparquear.dao.ReservationDAO;
 import com.apparquear.model.Reservation;
+import com.apparquear.exception.ApiRequestException;
+import java.util.Date;
+import java.sql.Timestamp;
 
 @RestController
 @RequestMapping("apparquear/reservation")
@@ -20,17 +23,26 @@ public class ReservationRest {
 	@Autowired
 	private ReservationDAO reservationDAO;
 
-	// Methods
+	//Realizar reserva
+
 	@CrossOrigin
 	@PostMapping("/save/{userID}/{parkingID}/{token}")
 	public void save(@PathVariable Integer userID,@PathVariable Integer parkingID, @PathVariable String token, @RequestBody Reservation reservation) {
-		reservation.setUser_ID(userID);
-		reservation.setParking_ID(parkingID);
-		reservation.setReservation_time(reservation.getReservation_time());
-        reservation.setFinal_time(reservation.getFinal_time());
-        reservation.setVehicle_type(reservation.getVehicle_type());
-
-        reservationDAO.save(reservation);        
+	Date date = new Date();
+	long time = date.getTime();
+	Timestamp ts = new Timestamp(time);
+		try {
+			if(ts.before(reservation.getReservation_time()) && reservation.getFinal_time().after(reservation.getReservation_time()) ){
+			reservation.setUser_ID(userID);
+			reservation.setParking_ID(parkingID);
+			reservation.setReservation_time(reservation.getReservation_time());
+			reservation.setFinal_time(reservation.getFinal_time());
+			reservation.setVehicle_type(reservation.getVehicle_type());
+			reservationDAO.save(reservation);     
+			}   
+		}catch (Exception e) {
+			throw new ApiRequestException(e.getMessage());
+		}
 	}
 
 		//Busca reservaciones por id de reservación
