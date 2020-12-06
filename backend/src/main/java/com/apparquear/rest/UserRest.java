@@ -2,6 +2,8 @@ package com.apparquear.rest;
 
 import java.util.List;
 
+import com.apparquear.dao.ParkingDAO;
+import com.apparquear.model.Parking;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +27,8 @@ public class UserRest {
 	private UserDAO userDAO;
 	@Autowired
 	private TokenDAO tokenDAO;
+	@Autowired
+	private ParkingDAO parkingDAO;
 	
 	//Methods
 	@CrossOrigin
@@ -66,6 +70,22 @@ public class UserRest {
         	throw new ApiRequestException("Este email no se encuentra registrado");
         }
     }
+
+	@CrossOrigin
+	@GetMapping("/myParkings")
+	public List<Parking> MyParkings(@RequestBody User user) {
+		List<Parking> userParkings = parkingDAO.findAllByUserID(user.getUserID());
+		return userParkings;
+	}
+
+	@CrossOrigin
+	@GetMapping("/isOwner")
+	public boolean isOwner(@RequestBody User user) {
+		List<Parking> userParkings = parkingDAO.findAllByUserID(user.getUserID());
+		if (!userParkings.isEmpty()) return true;
+		return false;
+	}
+
 	
 	public void main(String args[]) {
 		Token token = new Token();

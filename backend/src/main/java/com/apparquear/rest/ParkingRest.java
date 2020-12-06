@@ -66,6 +66,7 @@ public class ParkingRest {
 		return parkingDAO.findAll();
 	}
 
+
 	@CrossOrigin
 	@GetMapping("/findNear/{zoom}")
 	public List<Location> findNear(@RequestBody Location location, @PathVariable Integer zoom) {
@@ -117,5 +118,19 @@ public class ParkingRest {
 			throw new ApiRequestException("Este parqueadero no se encuentra registrado");
 		}
 		return resp;
+	}
+
+
+	@CrossOrigin
+	@PostMapping("/changePrice")
+	public Parking changePrice(@RequestBody Parking requestedParking) {
+		Parking parking = parkingDAO.findParkingByParkingID(requestedParking.getParkingID());
+		if (parking!=null){
+			if (requestedParking.getBike_cost_minute()!=null)parking.setBike_cost_minute(requestedParking.getBike_cost_minute());
+			if (requestedParking.getCar_cost_minute()!=null)parking.setCar_cost_minute(requestedParking.getCar_cost_minute());
+			if (requestedParking.getMotorcycle_cost_minute()!=null)parking.setMotorcycle_cost_minute(requestedParking.getMotorcycle_cost_minute());
+			parkingDAO.save(parking);
+		}
+		return parking;
 	}
 }
