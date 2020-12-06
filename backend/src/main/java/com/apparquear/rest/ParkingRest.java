@@ -124,12 +124,17 @@ public class ParkingRest {
 	@CrossOrigin
 	@PostMapping("/changePrice")
 	public Parking changePrice(@RequestBody Parking requestedParking) {
-		Parking parking = parkingDAO.findParkingByParkingID(requestedParking.getParkingID());
-		if (parking!=null){
-			if (requestedParking.getBike_cost_minute()!=null)parking.setBike_cost_minute(requestedParking.getBike_cost_minute());
-			if (requestedParking.getCar_cost_minute()!=null)parking.setCar_cost_minute(requestedParking.getCar_cost_minute());
-			if (requestedParking.getMotorcycle_cost_minute()!=null)parking.setMotorcycle_cost_minute(requestedParking.getMotorcycle_cost_minute());
-			parkingDAO.save(parking);
+		Parking parking;
+		try {
+			parking = parkingDAO.findParkingByParkingID(requestedParking.getParkingID());
+			if (parking!=null){
+				if (requestedParking.getBike_cost_minute()!=null)parking.setBike_cost_minute(requestedParking.getBike_cost_minute());
+				if (requestedParking.getCar_cost_minute()!=null)parking.setCar_cost_minute(requestedParking.getCar_cost_minute());
+				if (requestedParking.getMotorcycle_cost_minute()!=null)parking.setMotorcycle_cost_minute(requestedParking.getMotorcycle_cost_minute());
+				parkingDAO.save(parking);
+			}
+		} catch (Exception e){
+			throw new ApiRequestException("No se encontro el parqueadero con el id"+requestedParking.getParkingID());
 		}
 		return parking;
 	}
