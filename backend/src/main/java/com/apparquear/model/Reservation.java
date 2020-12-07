@@ -16,7 +16,7 @@ public class Reservation {
 	private Integer reservationID;
 	
 	@Column
-	private Integer parkingID;
+	private Long parkingID;
 
 	@Column
 	private Integer userID;
@@ -71,11 +71,11 @@ public class Reservation {
 		this.userID = userID;
     }
 
-    public Integer getParking_ID() {
+    public Long getParking_ID() {
 		return parkingID;
 	}
 
-	public void setParking_ID(Integer parkingID) {
+	public void setParking_ID(Long parkingID) {
 		this.parkingID = parkingID;
     }
     
