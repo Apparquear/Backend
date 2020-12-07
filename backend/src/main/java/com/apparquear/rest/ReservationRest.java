@@ -33,7 +33,7 @@ public class ReservationRest {
         reservationDAO.save(reservation);        
 	}
 
-		//Busca reservaciones por id de reservación
+	//Busca reservaciones por id de parqueadero
 	@GetMapping("/findByParking/{parkingID}")
 	public List<Reservation> findById(@PathVariable Integer parkingID) {
 		List<Reservation> resp = new ArrayList<>();
