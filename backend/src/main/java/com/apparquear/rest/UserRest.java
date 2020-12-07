@@ -72,14 +72,14 @@ public class UserRest {
     }
 
 	@CrossOrigin
-	@GetMapping("/myParkings")
+	@PostMapping("/myParkings")
 	public List<Parking> MyParkings(@RequestBody User user) {
 		List<Parking> userParkings = parkingDAO.findAllByUserID(user.getUserID());
 		return userParkings;
 	}
 
 	@CrossOrigin
-	@GetMapping("/isOwner")
+	@PostMapping("/isOwner")
 	public boolean isOwner(@RequestBody User user) {
 		List<Parking> userParkings = parkingDAO.findAllByUserID(user.getUserID());
 		if (!userParkings.isEmpty()) return true;
