@@ -1,9 +1,6 @@
 package com.apparquear.rest;
 
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.ArrayList;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -62,6 +59,7 @@ public class ReservationRest {
 	}*/
 
 	// Devuelve las reservaciones por Usuario
+	@CrossOrigin
 	@GetMapping("/findByUser/{userID}")
 	public List<Reservation> findByUser(@PathVariable Integer userID) {
 		List<Reservation> optionalReservation = reservationDAO.findAllByUserID(userID);
