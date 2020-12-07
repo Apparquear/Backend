@@ -31,32 +31,6 @@ public class ReservationRest {
 	private ReservationDAO reservationDAO;
 	@Autowired
 	private ParkingDAO parkingDAO;
-	//@Autowired
-	//private ParkingDAO parkingDAO;
-
-	// Realizar reserva
-
-	/*@CrossOrigin
-	@PostMapping("/save/{userID}/{parkingID}/{token}")
-	public void save(@PathVariable Integer userID, @PathVariable Integer parkingID, @PathVariable String token,
-			@RequestBody Reservation reservation) {
-		Date date = new Date();
-		long time = date.getTime();
-		Timestamp ts = new Timestamp(time);
-		try {
-			if (ts.before(reservation.getReservation_time())
-					&& reservation.getFinal_time().after(reservation.getReservation_time())) {
-				reservation.setUser_ID(userID);
-				reservation.setParking_ID(parkingID);
-				reservation.setReservation_time(reservation.getReservation_time());
-				reservation.setFinal_time(reservation.getFinal_time());
-				reservation.setVehicle_type(reservation.getVehicle_type());
-				reservationDAO.save(reservation);
-			}
-		} catch (Exception e) {
-			throw new ApiRequestException(e.getMessage());
-		}
-	}*/
 
 	// Devuelve las reservaciones por Usuario
 	@CrossOrigin
@@ -67,7 +41,6 @@ public class ReservationRest {
 	}
 
 	//Reserva y actualizaciòn de disponibilidad
-
 	@CrossOrigin
 	@PostMapping("/save/{userID}/{parkingID}/{token}")
 	public void save(@PathVariable Integer userID, @PathVariable Long parkingID, @PathVariable String token,
@@ -104,6 +77,16 @@ public class ReservationRest {
 		} catch (Exception e) {
 			throw new ApiRequestException(e.getMessage());
 		}
+    
+	//Busca reservaciones por id de parqueadero
+	@GetMapping("/findByParking/{parkingID}")
+	public List<Reservation> findById(@PathVariable Integer parkingID) {
+		List<Reservation> resp = new ArrayList<>();
+		Reservation reservation = new Reservation();
+		Optional<Reservation> optionalReservation = reservationDAO.findById(parkingID);
+		reservation = optionalReservation.get();
+		resp.add(reservation);
+		return resp;
 	}
 
 }
