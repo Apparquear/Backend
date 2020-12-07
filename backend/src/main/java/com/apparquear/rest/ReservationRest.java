@@ -1,18 +1,16 @@
 package com.apparquear.rest;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
 
 import com.apparquear.dao.ParkingDAO;
 //import com.apparquear.dao.ParkingDAO;
@@ -21,6 +19,8 @@ import com.apparquear.model.Parking;
 //import com.apparquear.model.Parking;
 import com.apparquear.model.Reservation;
 import com.apparquear.exception.ApiRequestException;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.sql.Timestamp;
 
@@ -77,6 +77,7 @@ public class ReservationRest {
 		} catch (Exception e) {
 			throw new ApiRequestException(e.getMessage());
 		}
+	}
     
 	//Busca reservaciones por id de parqueadero
 	@GetMapping("/findByParking/{parkingID}")
